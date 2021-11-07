@@ -1,3 +1,7 @@
-# Ohjelmistotekniikka 2021
+### Ohjelmistotekniikka 2021
 
-*Ohjelmistotekniikka* **-kurssin** repo
+#### Tehtävät
+
+##### Viikko 1
+https://github.com/ossikh/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt
+https://github.com/ossikh/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt
