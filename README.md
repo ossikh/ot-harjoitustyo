@@ -1,9 +1,9 @@
 # Ohjelmistotekniikka 2021 / ICT Hardware Manager
 
 
-[Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/dokumentaatio/vaatimusmaarittely.md)
+[Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/dokumentaatio/tuntikirjanpito.md)
+[Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blod/master/dokumentaatio/tuntikirjanpito.md)
 
  
  
