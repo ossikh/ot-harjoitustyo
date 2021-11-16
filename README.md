@@ -3,7 +3,7 @@
 
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
-[Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blod/master/dokumentaatio/tuntikirjanpito.md)
+[Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
  
  
