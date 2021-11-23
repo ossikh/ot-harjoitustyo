@@ -1,17 +1,11 @@
 # Ohjelmistotekniikka 2021 / ICT Hardware Manager
 
+Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
+
+
+
+## Dokumentaatio
 
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
-
- 
- 
-## Tehtävät
-
-### Viikko 2
-[Unicafe](https://github.com/ossikh/ot-harjoitustyo/tree/master/laskarit/viikko2)
-  
-### Viikko 1
-[komentorivi.txt](https://github.com/ossikh/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)  
-[gitlog.txt](https://github.com/ossikh/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
