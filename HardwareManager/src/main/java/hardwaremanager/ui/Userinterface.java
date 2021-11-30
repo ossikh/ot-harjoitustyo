@@ -17,8 +17,7 @@ public class Userinterface {
 
     public void start() {
 
-        System.out.println(
-                "-=[   Welcome to ICT Hardware Manager   ]=-");
+        System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
 
         while (true) {
             System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Create generic hardware list for testing purposes | [Q] Quit");
