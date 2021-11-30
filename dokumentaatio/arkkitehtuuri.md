@@ -1,1 +1,1 @@
-<img scr="hardman_arkki1.png">
+![alustava arkkitehtuurikuvaus](hardman_arkki1.png)
