@@ -5,13 +5,11 @@ public class Hardware {
     private String name;
     private String type;
     private String location;
-    private String details;
 
     public Hardware(String name, String type, String location) {
         this.name = name;
         this.type = type;
         this.location = location;
-        this.details = "";
     }
 
     public String getName() {
@@ -36,14 +34,6 @@ public class Hardware {
 
     public void setLocation(String location) {
         this.location = location;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
     }
 
     @Override

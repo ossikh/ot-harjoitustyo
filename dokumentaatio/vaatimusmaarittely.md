@@ -12,9 +12,9 @@ Sovelluksella on yksi käyttäjä. Myöhemmin saatetaan lisätä tuki useammalle
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Lista komponenteista &/ oheislaitteista
-- Kunkin komponentin sijainti
-- Järjestäminen sijainnin / tyypin mukaan
+- Lista komponenteista &/ oheislaitteista (tehty)
+- Kunkin komponentin sijainti (tehty)
+- Järjestäminen sijainnin / tyypin mukaan (tehty haku sijainnin mukaan)
 
 
 ## Laajennusideoita
