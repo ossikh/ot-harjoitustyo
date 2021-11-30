@@ -5,6 +5,7 @@ Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
 
 
 ## Dokumentaatio
+[Arkkitehtuurikuvaus](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
