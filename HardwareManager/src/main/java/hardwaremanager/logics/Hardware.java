@@ -1,13 +1,12 @@
-package fi.ossikh.hardwaremanager;
+package hardwaremanager.logics;
 
 public class Hardware {
-    
+
     private String name;
     private String type;
     private String location;
     private String details;
-    
-    
+
     public Hardware(String name, String type, String location) {
         this.name = name;
         this.type = type;
@@ -45,11 +44,11 @@ public class Hardware {
 
     public void setDetails(String details) {
         this.details = details;
-    }       
-    
+    }
+
     @Override
     public String toString() {
         return name + " - " + type + " @ " + location + ".";
     }
-        
+
 }

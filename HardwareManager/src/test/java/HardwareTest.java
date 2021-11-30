@@ -1,5 +1,5 @@
 
-import fi.ossikh.hardwaremanager.Hardware;
+import hardwaremanager.logics.Hardware;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,19 +1,29 @@
-package fi.ossikh.hardwaremanager;
+package hardwaremanager.ui;
 
+import hardwaremanager.logics.Hardware;
+import hardwaremanager.logics.Manager;
 import java.util.Scanner;
 
-public class HardMan {
+public class Userinterface {
 
-    public static void main(String[] args) {
+    private Scanner reader;
+    private Manager manager;
 
-        Manager manager = new Manager();
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
+    public Userinterface(Scanner reader) {
+
+        this.reader = reader;
+        manager = new Manager();
+    }
+
+    public void start() {
+
+        System.out.println(
+                "-=[   Welcome to ICT Hardware Manager   ]=-");
 
         while (true) {
             System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Create generic hardware list for testing purposes | [Q] Quit");
             System.out.print("Select action: ");
-            String action = keyboard.nextLine();
+            String action = reader.nextLine();
 
             if (action.equals("1")) {
                 System.out.println("");
@@ -23,11 +33,11 @@ public class HardMan {
 
             if (action.equals("2")) {
                 System.out.print("Enter new hardware name: ");
-                String name = keyboard.nextLine();
+                String name = reader.nextLine();
                 System.out.print("Enter new hardware type: ");
-                String type = keyboard.nextLine();
+                String type = reader.nextLine();
                 System.out.print("Enter new hardware location: ");
-                String location = keyboard.nextLine();
+                String location = reader.nextLine();
 
                 manager.addHardware(new Hardware(name, type, location));
                 System.out.println("Hardware added!");
@@ -37,7 +47,7 @@ public class HardMan {
                 manager = crateGenericManager();
             }
 
-            if (action.equals("Q")) {
+            if (action.equals("Q") || action.equals("q")) {
                 break;
             }
 
@@ -58,6 +68,8 @@ public class HardMan {
         manager.addHardware(new Hardware("AOC 32 IPS", "Monitor", "Main desk"));
         manager.addHardware(new Hardware("Logitech MX Keys wireless", "Keyboard", "Main desk"));
         manager.addHardware(new Hardware("ASUS ROG Strix Carry wireless", "Mouse", "Main desk"));
+
+        System.out.println("Generic hardware list created!");
 
         return manager;
     }
