@@ -20,7 +20,7 @@ public class Userinterface {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
 
         while (true) {
-            System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Create generic hardware list for testing purposes | [Q] Quit");
+            System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Search by location | [4] Create generic hardware list for testing purposes | [Q] Quit");
             System.out.print("Select action: ");
             String action = reader.nextLine();
 
@@ -41,8 +41,14 @@ public class Userinterface {
                 manager.addHardware(new Hardware(name, type, location));
                 System.out.println("Hardware added!");
             }
-
+            
             if (action.equals("3")) {
+                System.out.println("Enter location: ");
+                String location = reader.nextLine();
+                manager.searchByLocation(location);
+            }
+
+            if (action.equals("4")) {
                 manager = crateGenericManager();
             }
 
