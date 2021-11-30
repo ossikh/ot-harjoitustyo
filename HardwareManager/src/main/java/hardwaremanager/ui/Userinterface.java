@@ -20,11 +20,12 @@ public class Userinterface {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
 
         while (true) {
-            System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Search by location | [4] Create generic hardware list for testing purposes | [Q] Quit");
+            System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Search by location | [G] Create generic hardware list for testing purposes | [Q] Quit");
             System.out.print("Select action: ");
             String action = reader.nextLine();
 
             if (action.equals("1")) {
+                System.out.println("Listing hardware:");
                 System.out.println("");
                 manager.listHardware();
                 System.out.println("");
@@ -43,16 +44,19 @@ public class Userinterface {
             }
             
             if (action.equals("3")) {
-                System.out.println("Enter location: ");
+                System.out.print("Enter location: ");
                 String location = reader.nextLine();
+                System.out.println("Displaying items on location containing " + location + ": ");
+                System.out.println("");
                 manager.searchByLocation(location);
+                System.out.println("");
             }
 
-            if (action.equals("4")) {
+            if (action.toLowerCase().equals("g")) {
                 manager = crateGenericManager();
             }
 
-            if (action.equals("Q") || action.equals("q")) {
+            if (action.toLowerCase().equals("q")) {
                 break;
             }
 
