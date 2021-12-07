@@ -10,3 +10,38 @@ Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
+### Asennus- ja testaustoiminnot
+
+Ohjelman käynnistäminen onnistuu komennolla:
+```
+mvn compile exec:java -Dexec.mainClass=hardwaremanager.Hardman
+```
+
+
+Ohjelman paketointi suoritettavaksi jar-tiedostoksi onnistuu komennolla:
+```
+mvn package
+
+```
+
+Alihakemistoon _/target/_ luotu jar-tiedosto voidaan käynnistää komennolla:
+```
+java -jar hardwaremanager-1.0-SNAPSHOT.jar
+```
+
+Ohjelman testien suoritus onnistuu komennolla:
+```
+mvn test
+```
+
+Ohjelman JaCoCo -testikattavuusraportin luonti onnistuu komennolla:
+
+```
+mvn jacoco:report
+```
+
+Ohjelman checkstyle-tarkistukset voidaan suorittaa komennolla:
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
