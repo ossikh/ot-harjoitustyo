@@ -12,7 +12,8 @@ public class Userinterface {
     public Userinterface(Scanner reader) {
 
         this.reader = reader;
-        manager = new Manager();
+        manager = new Manager();   
+        
     }
 
     public void start() {
@@ -21,7 +22,7 @@ public class Userinterface {
         uiBlankLine();
 
         while (true) {
-
+            
             uiDisplayMenu();
             String action = reader.nextLine();
 
@@ -46,9 +47,9 @@ public class Userinterface {
             if (action.toLowerCase().equals("q")) {
                 break;
             }
-
+            
         }
-
+        
     }
 
     public void uiDisplayMenu() {
@@ -67,7 +68,7 @@ public class Userinterface {
 
     public void uiWelcomeMessage() {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
-    }
+    }   
 
     public void uiListHardware() {
         System.out.println("Listing all hardware:");
