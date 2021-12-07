@@ -20,7 +20,14 @@ public class Userinterface {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
 
         while (true) {
-            System.out.println("Available actions > [1] List hardware | [2] Add hardware | [3] Search by location | [G] Create generic hardware list for testing purposes | [Q] Quit");
+            System.out.println("Available actions > "
+                    + "[1] List hardware | "
+                    + "[2] Add hardware | "
+                    + "[3] Search by name | "
+                    + "[4] Search by type | "
+                    + "[5] Search by location | "
+                    + "[G] Create generic hardware list for testing purposes | "
+                    + "[Q] Quit");
             System.out.print("Select action: ");
             String action = reader.nextLine();
 
@@ -44,6 +51,24 @@ public class Userinterface {
             }
             
             if (action.equals("3")) {
+                System.out.print("Enter name: ");
+                String name = reader.nextLine();
+                System.out.println("Displaying items containing name " + name + ": ");
+                System.out.println("");
+                manager.searchByName(name);
+                System.out.println("");
+            }
+            
+            if (action.equals("4")) {
+                System.out.print("Enter type: ");
+                String type = reader.nextLine();
+                System.out.println("Displaying items containing type " + type + ": ");
+                System.out.println("");
+                manager.searchByType(type);
+                System.out.println("");
+            }
+            
+            if (action.equals("5")) {
                 System.out.print("Enter location: ");
                 String location = reader.nextLine();
                 System.out.println("Displaying items on location containing " + location + ": ");
