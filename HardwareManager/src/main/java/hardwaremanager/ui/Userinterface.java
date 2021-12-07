@@ -17,76 +17,105 @@ public class Userinterface {
 
     public void start() {
 
-        System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
+        uiWelcomeMessage();
+        uiBlankLine();
 
         while (true) {
-            System.out.println("Available actions > "
-                    + "[1] List hardware | "
-                    + "[2] Add hardware | "
-                    + "[3] Search by title | "
-                    + "[4] Search by type | "
-                    + "[5] Search by location | "
-                    + "[G] Create generic hardware list for testing purposes | "
-                    + "[Q] Quit");
-            System.out.print("Select action: ");
+
+            uiDisplayMenu();
             String action = reader.nextLine();
 
             if (action.equals("1")) {
-                System.out.println("Listing hardware:");
-                System.out.println("");
-                manager.listHardware();
-                System.out.println("");
+                uiListHardware();
             }
-
             if (action.equals("2")) {
-                System.out.print("Enter new hardware title: ");
-                String title = reader.nextLine();
-                System.out.print("Enter new hardware type: ");
-                String type = reader.nextLine();
-                System.out.print("Enter new hardware location: ");
-                String location = reader.nextLine();
-
-                manager.addHardware(new Hardware(title, type, location));
-                System.out.println("Hardware added!");
+                uiAddHardware();
             }
-            
             if (action.equals("3")) {
-                System.out.print("Enter title: ");
-                String title = reader.nextLine();
-                System.out.println("Displaying items containing title " + title + ": ");
-                System.out.println("");
-                manager.searchByTitle(title);
-                System.out.println("");
+                uiTitleSearch();
             }
-            
             if (action.equals("4")) {
-                System.out.print("Enter type: ");
-                String type = reader.nextLine();
-                System.out.println("Displaying items containing type " + type + ": ");
-                System.out.println("");
-                manager.searchByType(type);
-                System.out.println("");
+                uiTypeSearch();
             }
-            
             if (action.equals("5")) {
-                System.out.print("Enter location: ");
-                String location = reader.nextLine();
-                System.out.println("Displaying items on location containing " + location + ": ");
-                System.out.println("");
-                manager.searchByLocation(location);
-                System.out.println("");
+                uiLocationSearch();
             }
-
             if (action.toLowerCase().equals("g")) {
                 manager = crateGenericManager();
             }
-
             if (action.toLowerCase().equals("q")) {
                 break;
             }
 
         }
 
+    }
+
+    public void uiDisplayMenu() {
+        System.out.println("Available actions: ");
+        System.out.println(""
+                + "[1] List all hardware | "
+                + "[2] Add hardware | "
+                + "[3] Search by title | "
+                + "[4] Search by type | "
+                + "[5] Search by location | "
+                + "[G] Create generic hardware list for testing purposes | "
+                + "[Q] Quit");
+
+        System.out.print("Select action: ");
+    }
+
+    public void uiWelcomeMessage() {
+        System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
+    }
+
+    public void uiListHardware() {
+        System.out.println("Listing all hardware:");
+        uiBlankLine();
+        manager.listHardware();
+        uiBlankLine();
+    }
+
+    public void uiAddHardware() {
+        System.out.print("Enter new hardware title: ");
+        String title = reader.nextLine();
+        System.out.print("Enter new hardware type: ");
+        String type = reader.nextLine();
+        System.out.print("Enter new hardware location: ");
+        String location = reader.nextLine();
+        manager.addHardware(new Hardware(title, type, location));
+        System.out.println("Hardware added!");
+    }
+
+    public void uiTitleSearch() {
+        System.out.print("Enter title search string: ");
+        String title = reader.nextLine();
+        System.out.println("Displaying items containing title " + title + ": ");
+        uiBlankLine();
+        manager.searchByTitle(title);
+        uiBlankLine();
+    }
+
+    public void uiTypeSearch() {
+        System.out.print("Enter type search string: ");
+        String type = reader.nextLine();
+        System.out.println("Displaying items containing type " + type + ": ");
+        uiBlankLine();
+        manager.searchByType(type);
+        uiBlankLine();
+    }
+
+    public void uiLocationSearch() {
+        System.out.print("Enter location search string: ");
+        String location = reader.nextLine();
+        System.out.println("Displaying items on location containing " + location + ": ");
+        uiBlankLine();
+        manager.searchByLocation(location);
+        uiBlankLine();
+    }
+
+    public void uiBlankLine() {
+        System.out.println("");
     }
 
     public static Manager crateGenericManager() {
