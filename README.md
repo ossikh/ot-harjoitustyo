@@ -5,11 +5,14 @@ Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
 
 
 ## Dokumentaatio
+[Käyttöohje](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/kayttohje.md)
+
 [Arkkitehtuurikuvaus](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+
 
 ### Asennus- ja testaustoiminnot
 
@@ -22,7 +25,6 @@ mvn compile exec:java -Dexec.mainClass=hardwaremanager.Hardman
 Ohjelman paketointi suoritettavaksi jar-tiedostoksi onnistuu komennolla:
 ```
 mvn package
-
 ```
 
 Alihakemistoon _/target/_ luotu jar-tiedosto voidaan käynnistää komennolla:
