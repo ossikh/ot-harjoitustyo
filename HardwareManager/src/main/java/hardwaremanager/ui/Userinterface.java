@@ -23,7 +23,7 @@ public class Userinterface {
             System.out.println("Available actions > "
                     + "[1] List hardware | "
                     + "[2] Add hardware | "
-                    + "[3] Search by name | "
+                    + "[3] Search by title | "
                     + "[4] Search by type | "
                     + "[5] Search by location | "
                     + "[G] Create generic hardware list for testing purposes | "
@@ -39,23 +39,23 @@ public class Userinterface {
             }
 
             if (action.equals("2")) {
-                System.out.print("Enter new hardware name: ");
-                String name = reader.nextLine();
+                System.out.print("Enter new hardware title: ");
+                String title = reader.nextLine();
                 System.out.print("Enter new hardware type: ");
                 String type = reader.nextLine();
                 System.out.print("Enter new hardware location: ");
                 String location = reader.nextLine();
 
-                manager.addHardware(new Hardware(name, type, location));
+                manager.addHardware(new Hardware(title, type, location));
                 System.out.println("Hardware added!");
             }
             
             if (action.equals("3")) {
-                System.out.print("Enter name: ");
-                String name = reader.nextLine();
-                System.out.println("Displaying items containing name " + name + ": ");
+                System.out.print("Enter title: ");
+                String title = reader.nextLine();
+                System.out.println("Displaying items containing title " + title + ": ");
                 System.out.println("");
-                manager.searchByName(name);
+                manager.searchByTitle(title);
                 System.out.println("");
             }
             

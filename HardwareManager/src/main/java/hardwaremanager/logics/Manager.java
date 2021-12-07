@@ -18,9 +18,9 @@ public class Manager {
         hwlist.stream().forEach(System.out::println);
     }        
     
-    public void searchByName(String name) {
+    public void searchByTitle(String title) {
         hwlist.stream()
-                .filter(h -> h.getName().toLowerCase().contains(name.toLowerCase()))
+                .filter(h -> h.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .forEach(System.out::println);
     }
     

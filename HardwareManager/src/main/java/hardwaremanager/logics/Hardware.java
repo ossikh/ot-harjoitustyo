@@ -2,22 +2,22 @@ package hardwaremanager.logics;
 
 public class Hardware {
 
-    private String name;
+    private String title;
     private String type;
     private String location;
 
-    public Hardware(String name, String type, String location) {
-        this.name = name;
+    public Hardware(String title, String type, String location) {
+        this.title = title;
         this.type = type;
         this.location = location;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getType() {
@@ -38,7 +38,7 @@ public class Hardware {
 
     @Override
     public String toString() {
-        return name + " - " + type + " @ " + location + ".";
+        return title + " - " + type + " @ " + location + ".";
     }
 
 }
