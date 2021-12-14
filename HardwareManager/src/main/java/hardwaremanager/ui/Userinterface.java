@@ -3,7 +3,6 @@ package hardwaremanager.ui;
 import hardwaremanager.logics.Hardware;
 import hardwaremanager.logics.Manager;
 import java.util.Scanner;
-import javax.swing.text.html.HTML;
 import org.apache.commons.lang3.math.NumberUtils;
 
 
