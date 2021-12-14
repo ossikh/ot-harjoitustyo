@@ -1,11 +1,22 @@
 package hardwaremanager.logics;
 
+/**
+ * Tietokonekomponenttia tai oheislaitetta kuvaava luokka
+ */
+
 public class Hardware {
 
     private String title;
     private String type;
     private String location;
 
+    /**
+     * Uuden komponentin lisääminen
+     * 
+     * @param title komponentin nimi
+     * @param type komponentin tyyppi
+     * @param location komponentin sijainti
+     */  
     public Hardware(String title, String type, String location) {
         this.title = title;
         this.type = type;

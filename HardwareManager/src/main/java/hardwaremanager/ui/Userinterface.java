@@ -6,6 +6,11 @@ import java.util.Scanner;
 import javax.swing.text.html.HTML;
 import org.apache.commons.lang3.math.NumberUtils;
 
+
+/**
+ * Käyttöliittymästä vastaava luokka
+ */
+
 public class Userinterface {
 
     private Scanner reader;
