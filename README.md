@@ -49,3 +49,8 @@ Ohjelman checkstyle-tarkistukset voidaan suorittaa komennolla:
 ```
 mvn jxr:jxr checkstyle:checkstyle
 ```
+
+Javadoc voidaan luoda kommenolla:
+```
+mvn javadoc:javadoc
+```
