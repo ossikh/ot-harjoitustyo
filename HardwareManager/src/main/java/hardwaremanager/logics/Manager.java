@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * Ohjelmiston päätoiminnallisuuden ja komponenttikirjanpidon tarjoava luokka
  */
-
 public class Manager {
 
     private ArrayList<Hardware> hwlist;
@@ -16,6 +15,7 @@ public class Manager {
 
     /**
      * Lisää komponenttikirjanpitoon komponentin
+     *
      * @param hardware lisättävä komponentti
      */
     public void addHardware(Hardware hardware) {
@@ -54,8 +54,10 @@ public class Manager {
 
     /**
      * Poistaa komponentin
-     * @param number poistaa annetun järjestysnumeron mukaisen komponentin, jäjestysnumero vastaa listausmetodin näyttämää numeroa
-     * 
+     *
+     * @param number poistaa annetun järjestysnumeron mukaisen komponentin,
+     * jäjestysnumero vastaa listausmetodin näyttämää numeroa
+     *
      * @return palauttaa true jos komponentti on poistettu, muuten false
      */
     public boolean removeHardware(int number) {
@@ -66,6 +68,11 @@ public class Manager {
         return false;
     }
 
+    /**
+     * Tarkistaa onko järjestelmässä komponentteja
+     * 
+     * @return palauttaa true jos komponentteja on listassa, false jos lista on tyhjä
+     */
     public boolean hwlistNotEmpty() {
         return !hwlist.isEmpty();
     }
