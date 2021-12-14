@@ -14,9 +14,11 @@ Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
 [Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Releaset
-[Viikko 6](https://github.com/ossikh/ot-harjoitustyo/releases/tag/viikko6)  
+[Viikko 6](https://github.com/ossikh/ot-harjoitustyo/releases/tag/viikko6)
+  
 [Viikko 5](https://github.com/ossikh/ot-harjoitustyo/releases/tag/viikko5)
 
+  
 ### Asennus- ja testaustoiminnot
 
 Ohjelman käynnistäminen onnistuu komennolla:
