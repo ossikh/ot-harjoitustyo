@@ -42,11 +42,39 @@ public class ManagerTest {
     public void tearDown() {
         System.setOut(standardOut);
     }
+    
+    @Test
+    public void hwlistCorrectlyNotEmpty() {        
+        assertEquals(true, manager.hwlistNotEmpty());
+    }
+    
+    @Test
+    public void hwlistNotIncorrectlyEmpty() {
+        assertEquals(false, !manager.hwlistNotEmpty());
+    }
+    
+    @Test
+    public void hardwareIsRemoved() {        
+        manager.removeHardware(1);
+        assertEquals(false, manager.hwlistNotEmpty());
+    }
+    
+    @Test
+    public void hardwareIsNotIncorrectlyRemovedOnTooHighNumber() {        
+        manager.removeHardware(2);
+        assertEquals(true, manager.hwlistNotEmpty());
+    }
+    
+    @Test
+    public void hardwareIsNotIncorrectlyRemovedOnNegativeNumber() {        
+        manager.removeHardware(-2);
+        assertEquals(true, manager.hwlistNotEmpty());
+    }
 
     @Test
     public void hardwareIsListed() {
         manager.listHardware();
-        assertEquals("B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
+        assertEquals("1. B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
     }
     
     @Test

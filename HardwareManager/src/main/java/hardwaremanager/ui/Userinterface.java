@@ -3,6 +3,8 @@ package hardwaremanager.ui;
 import hardwaremanager.logics.Hardware;
 import hardwaremanager.logics.Manager;
 import java.util.Scanner;
+import javax.swing.text.html.HTML;
+import org.apache.commons.lang3.math.NumberUtils;
 
 public class Userinterface {
 
@@ -12,8 +14,8 @@ public class Userinterface {
     public Userinterface(Scanner reader) {
 
         this.reader = reader;
-        manager = new Manager();   
-        
+        manager = new Manager();
+
     }
 
     public void start() {
@@ -22,7 +24,7 @@ public class Userinterface {
         uiBlankLine();
 
         while (true) {
-            
+
             uiDisplayMenu();
             String action = reader.nextLine();
 
@@ -41,15 +43,18 @@ public class Userinterface {
             if (action.equals("5")) {
                 uiLocationSearch();
             }
+            if (action.toLowerCase().equals("r")) {
+                uiRemoveHardware();
+            }
             if (action.toLowerCase().equals("g")) {
                 manager = crateGenericManager();
             }
             if (action.toLowerCase().equals("q")) {
                 break;
             }
-            
+
         }
-        
+
     }
 
     public void uiDisplayMenu() {
@@ -60,20 +65,38 @@ public class Userinterface {
                 + "[3] Search by title | "
                 + "[4] Search by type | "
                 + "[5] Search by location | "
+                + "[R] Remove hardware | "
                 + "[G] Create generic hardware list for testing purposes | "
-                + "[Q] Quit");
+                + "[Q] Quit"
+        );
 
         System.out.print("Select action: ");
     }
 
     public void uiWelcomeMessage() {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
-    }   
+    }
+
+    public void uiRemoveHardware() {
+        System.out.print("Enter number of hardware to remove: ");
+        String remove = reader.nextLine();
+        uiBlankLine();
+        if (remove.length() < 10 && NumberUtils.isCreatable(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
+            System.out.println("Hardware removed!");
+        } else {
+            System.out.println("Hardware not removed!");
+        }
+        uiBlankLine();
+    }
 
     public void uiListHardware() {
         System.out.println("Listing all hardware:");
         uiBlankLine();
-        manager.listHardware();
+        if (manager.hwlistNotEmpty()) {
+            manager.listHardware();
+        } else {
+            System.out.println("No hardware found!");
+        }
         uiBlankLine();
     }
 
@@ -91,7 +114,7 @@ public class Userinterface {
     public void uiTitleSearch() {
         System.out.print("Enter title search string: ");
         String title = reader.nextLine();
-        System.out.println("Displaying items containing title " + title + ": ");
+        System.out.println("Displaying items containing title '" + title + "': ");
         uiBlankLine();
         manager.searchByTitle(title);
         uiBlankLine();
@@ -100,7 +123,7 @@ public class Userinterface {
     public void uiTypeSearch() {
         System.out.print("Enter type search string: ");
         String type = reader.nextLine();
-        System.out.println("Displaying items containing type " + type + ": ");
+        System.out.println("Displaying items containing type '" + type + "': ");
         uiBlankLine();
         manager.searchByType(type);
         uiBlankLine();
@@ -109,7 +132,7 @@ public class Userinterface {
     public void uiLocationSearch() {
         System.out.print("Enter location search string: ");
         String location = reader.nextLine();
-        System.out.println("Displaying items on location containing " + location + ": ");
+        System.out.println("Displaying items on location containing '" + location + "': ");
         uiBlankLine();
         manager.searchByLocation(location);
         uiBlankLine();
@@ -119,9 +142,8 @@ public class Userinterface {
         System.out.println("");
     }
 
-    public static Manager crateGenericManager() {
+    public Manager crateGenericManager() {
         Manager manager = new Manager();
-
         manager.addHardware(new Hardware("Asus TUF B550", "Motherboard", "Main machine"));
         manager.addHardware(new Hardware("Ryzen 7 3700x", "Processor", "Main machine"));
         manager.addHardware(new Hardware("Corsair LPX DDR4-3200, 32GB", "Memory", "Main machine"));
@@ -132,9 +154,9 @@ public class Userinterface {
         manager.addHardware(new Hardware("AOC 32 IPS", "Monitor", "Main desk"));
         manager.addHardware(new Hardware("Logitech MX Keys wireless", "Keyboard", "Main desk"));
         manager.addHardware(new Hardware("ASUS ROG Strix Carry wireless", "Mouse", "Main desk"));
-
+        uiBlankLine();
         System.out.println("Generic hardware list created!");
-
+        uiBlankLine();
         return manager;
     }
 
