@@ -14,7 +14,8 @@ Sovelluksella on yksi käyttäjä. Myöhemmin saatetaan lisätä tuki useammalle
 
 - Lista komponenteista & oheislaitteista
 - Kunkin komponentin sijainti
-- Komponenttien haku ja listaus nimen, tyypin tai sijainnin mukaan (tehty)
+- Komponenttien haku ja listaus nimen, tyypin tai sijainnin mukaan
+- Komponentin poistaminen järjestelmästä (tehty)
 
 
 ## Laajennusideoita

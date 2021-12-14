@@ -8,5 +8,6 @@ Ohjelmaa käytetään tekstikäyttöliittymän avulla. Käyttöliittymä tarjoaa
 `[3]` - Haku nimen perusteella. Listaa kaikki komponentit joiden nimestä löytyy annettu teksti.  
 `[4]` - Haku tyypin perusteella. Listaa kaikki komponentit joiden tyypissä on annettu teksti.  
 `[5]` - Haku sijainnin perusteella. Listaa kaikki komponentit joiden sijainnista löytyy annettu teksti.  
+`[R]` - Poistaa komponentin. Poistaminen tapahtuu syöttämällä listauksessa annettu komponentin järjestysnumero.  
 `[G]` - Luo valmiin komponenttilistauksen, hyödyllinen haluttaessa vain testata ohjelman toiminnallisuutta.  
 `[Q]` - Lopettaa ohjelman suorituksen.  
