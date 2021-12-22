@@ -85,6 +85,9 @@ public class Userinterface {
         System.out.print("Enter number of hardware to remove: ");
         String remove = reader.nextLine();
         uiBlankLine();
+        if (!confirmationCheck()){
+            return;
+        }
         if (remove.length() < 10 && NumberUtils.isCreatable(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
             System.out.println("Hardware removed!");
         } else {
@@ -144,6 +147,14 @@ public class Userinterface {
 
     public void uiBlankLine() {
         System.out.println("");
+    }
+    
+    public boolean confirmationCheck(){
+        System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");        
+        if (reader.nextLine().toLowerCase().equals("y")){
+            return true;
+        }
+        return false;
     }
 
     public Manager crateGenericManager() {
