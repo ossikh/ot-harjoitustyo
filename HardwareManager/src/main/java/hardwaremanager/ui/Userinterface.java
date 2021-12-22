@@ -151,10 +151,7 @@ public class Userinterface {
     
     public boolean confirmationCheck(){
         System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");        
-        if (reader.nextLine().toLowerCase().equals("y")){
-            return true;
-        }
-        return false;
+        return (reader.nextLine().toLowerCase().equals("y"));
     }
 
     public Manager crateGenericManager() {
