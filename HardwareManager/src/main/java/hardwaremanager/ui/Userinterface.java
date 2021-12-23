@@ -5,11 +5,9 @@ import hardwaremanager.logics.Manager;
 import java.util.Scanner;
 import org.apache.commons.lang3.math.NumberUtils;
 
-
 /**
  * Käyttöliittymästä vastaava luokka
  */
-
 public class Userinterface {
 
     private Scanner reader;
@@ -47,6 +45,9 @@ public class Userinterface {
             if (action.equals("5")) {
                 uiLocationSearch();
             }
+            if (action.toLowerCase().equals("m")) {
+                uiModifyHardware();
+            }
             if (action.toLowerCase().equals("r")) {
                 uiRemoveHardware();
             }
@@ -81,11 +82,48 @@ public class Userinterface {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
     }
 
+    public void uiModifyHardware() {
+        System.out.print("Enter number of hardware to modify: ");
+        String modify = reader.nextLine();
+        if (modify.length() < 10 && NumberUtils.isCreatable(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
+            int hwnumber = NumberUtils.createInteger(modify);
+            while (true) {
+                uiBlankLine();
+                System.out.println("You are modifying the following hardware: " + manager.getHardware(hwnumber));
+                uiBlankLine();
+                System.out.println("Select field to modify: [1] Title | [2] Type | [3] Location | [C] Cancel action");
+                System.out.print("Select action: ");
+                String action = reader.nextLine();
+                if (action.toLowerCase().equals("c")) {
+                    break;
+                }
+                if (action.equals("1")) {
+                    System.out.print("Enter new field for 'title': ");
+                    String title = reader.nextLine();
+                    manager.getHardware(hwnumber).setTitle(title);
+                    System.out.println("Title changed to '" + title + "'.");
+                }
+                if (action.equals("2")) {
+                    System.out.print("Enter new field for 'type': ");
+                    String type = reader.nextLine();
+                    manager.getHardware(hwnumber).setType(type);
+                    System.out.println("Type changed to '" + type + "'.");
+                }
+                if (action.equals("3")) {
+                    System.out.print("Enter new field for 'location': ");
+                    String location = reader.nextLine();
+                    manager.getHardware(hwnumber).setLocation(location);
+                    System.out.println("Location changed to '" + location + "'.");
+                }
+            }
+        }
+    }
+
     public void uiRemoveHardware() {
         System.out.print("Enter number of hardware to remove: ");
         String remove = reader.nextLine();
         uiBlankLine();
-        if (!confirmationCheck()){
+        if (!confirmationCheck()) {
             return;
         }
         if (remove.length() < 10 && NumberUtils.isCreatable(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
@@ -148,9 +186,9 @@ public class Userinterface {
     public void uiBlankLine() {
         System.out.println("");
     }
-    
-    public boolean confirmationCheck(){
-        System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");        
+
+    public boolean confirmationCheck() {
+        System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");
         return (reader.nextLine().toLowerCase().equals("y"));
     }
 

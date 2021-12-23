@@ -15,7 +15,7 @@ public class ManagerTest {
 
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-    
+
     Manager manager;
     Hardware hardware;
 
@@ -42,31 +42,31 @@ public class ManagerTest {
     public void tearDown() {
         System.setOut(standardOut);
     }
-    
+
     @Test
-    public void hwlistCorrectlyNotEmpty() {        
+    public void hwlistCorrectlyNotEmpty() {
         assertEquals(true, manager.hwlistNotEmpty());
     }
-    
+
     @Test
     public void hwlistNotIncorrectlyEmpty() {
         assertEquals(false, !manager.hwlistNotEmpty());
     }
-    
+
     @Test
-    public void hardwareIsRemoved() {        
+    public void hardwareIsRemoved() {
         manager.removeHardware(1);
         assertEquals(false, manager.hwlistNotEmpty());
     }
-    
+
     @Test
-    public void hardwareIsNotIncorrectlyRemovedOnTooHighNumber() {        
+    public void hardwareIsNotIncorrectlyRemovedOnTooHighNumber() {
         manager.removeHardware(2);
         assertEquals(true, manager.hwlistNotEmpty());
     }
-    
+
     @Test
-    public void hardwareIsNotIncorrectlyRemovedOnNegativeNumber() {        
+    public void hardwareIsNotIncorrectlyRemovedOnNegativeNumber() {
         manager.removeHardware(-2);
         assertEquals(true, manager.hwlistNotEmpty());
     }
@@ -76,23 +76,23 @@ public class ManagerTest {
         manager.listHardware();
         assertEquals("1. B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
     }
-    
+
     @Test
     public void titleSearchIsFound() {
         manager.searchByTitle("b55");
         assertEquals("B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
     }
-    
+
     @Test
     public void typeSearchIsFound() {
         manager.searchByType("herbo");
         assertEquals("B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
     }
-    
+
     @Test
     public void locationSearchIsFound() {
         manager.searchByLocation("machin");
         assertEquals("B550 - Motherboard @ Main machine.", outputStreamCaptor.toString().trim());
     }
-        
+
 }

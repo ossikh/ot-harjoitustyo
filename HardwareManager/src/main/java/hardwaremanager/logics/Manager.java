@@ -69,9 +69,24 @@ public class Manager {
     }
 
     /**
+     * Palauttaa listalta komponentin
+     *
+     * @param number numero jonka mukainen komponentti halutaan palauttaa
+     * listalta
+     * @return palauttaa komponentin jos se löytyy, muuten false
+     */
+    public Hardware getHardware(int number) {
+        if (hwlistNotEmpty() && number > 0 && number <= hwlist.size()) {
+            return hwlist.get(number - 1);
+        }
+        return null;
+    }
+
+    /**
      * Tarkistaa onko järjestelmässä komponentteja
-     * 
-     * @return palauttaa true jos komponentteja on listassa, false jos lista on tyhjä
+     *
+     * @return palauttaa true jos komponentteja on listassa, false jos lista on
+     * tyhjä
      */
     public boolean hwlistNotEmpty() {
         return !hwlist.isEmpty();
