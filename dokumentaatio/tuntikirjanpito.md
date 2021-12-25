@@ -2,6 +2,8 @@
 
 | Pvm   | Tunnit | Kuvaus |
 | :-----|:-------| :------|
+| 23.12 | 1  | Mahdollisuuden muokata komponenttien tietuita lisäys
+| 22.12 | 1  | Vahvistuskysymyksen metodin lisäys
 | 14.12 | 5  | Komponentin poiston lisäys, testejä, javadoc, dokumentaatiota, release
 |  7.12 | 6  | Hakuominaisuuksien ja testien lisäystä, refaktorointia, dokumentaatiota, release
 | 30.11 | 5  | Ohjelmointia, oheistoimintaa ja dokumentaation tekoa
