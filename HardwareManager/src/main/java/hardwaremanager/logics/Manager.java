@@ -8,9 +8,11 @@ import java.util.ArrayList;
 public class Manager {
 
     private ArrayList<Hardware> hwlist;
+    private Fileoperator fileoperator;
 
     public Manager() {
         this.hwlist = new ArrayList<>();
+        this.fileoperator = new Fileoperator();
     }
 
     /**
@@ -90,5 +92,16 @@ public class Manager {
      */
     public boolean hwlistNotEmpty() {
         return !hwlist.isEmpty();
+    }
+
+    public void saveHardwarelist(String filename) {
+        fileoperator.saveList(filename, hwlist);
+    }
+
+    public void loadHardwarelist(String filename) {
+        ArrayList loadlist = fileoperator.loadList(filename);
+        if (loadlist != null && loadlist.size() > 0){
+            this.hwlist = loadlist;
+        }
     }
 }

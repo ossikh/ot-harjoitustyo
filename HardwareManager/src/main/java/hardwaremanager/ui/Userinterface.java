@@ -2,6 +2,7 @@ package hardwaremanager.ui;
 
 import hardwaremanager.logics.Hardware;
 import hardwaremanager.logics.Manager;
+import hardwaremanager.logics.Fileoperator;
 import java.util.Scanner;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -16,7 +17,7 @@ public class Userinterface {
     public Userinterface(Scanner reader) {
 
         this.reader = reader;
-        manager = new Manager();
+        this.manager = new Manager();
 
     }
 
@@ -56,6 +57,16 @@ public class Userinterface {
             }
             if (action.toLowerCase().equals("q")) {
                 break;
+            }
+            if (action.toLowerCase().equals("loadlist")){
+                System.out.println("enter load filename: ");
+                String filename = reader.nextLine();
+                manager.loadHardwarelist(filename);
+            }
+            if (action.toLowerCase().equals("savelist")){
+                System.out.println("enter save filename: ");
+                String filename = reader.nextLine();
+                manager.saveHardwarelist(filename);
             }
 
         }
