@@ -2,6 +2,7 @@
 
 | Pvm   | Tunnit | Kuvaus |
 | :-----|:-------| :------|
+| 26.12 | 9 | Loppupalautusversion ohjelmointia ja dokumentaation päivitystä, release
 | 25.12 | 3  | Komponenttilistauksen tiedostoon tallentamisen ja -lukemisen lisäys
 | 23.12 | 1  | Mahdollisuuden muokata komponenttien tietuita lisäys
 | 22.12 | 1  | Vahvistuskysymyksen metodin lisäys
@@ -11,4 +12,4 @@
 | 23.11 | 4	 | Ensimmäisen version ohjelmointi |
 | 17.11 | 1	 | Suunnittelua |
 | 16.11.| 1      | Alustava vaatimusmäärittely, tuntikirjanpito |
-| Yht.  | 27      | | 
+| Yht.  | 36      | | 
