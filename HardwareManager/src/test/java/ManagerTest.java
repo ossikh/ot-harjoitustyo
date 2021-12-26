@@ -32,10 +32,9 @@ public class ManagerTest {
 
     @Before
     public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-        Hardware mobo = new Hardware("B550", "Motherboard", "Main machine");
+        System.setOut(new PrintStream(outputStreamCaptor));        
         manager = new Manager();
-        manager.addHardware(mobo);
+        manager.addNewHardware("B550", "Motherboard", "Main machine");
     }
 
     @After
