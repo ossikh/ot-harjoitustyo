@@ -12,7 +12,7 @@ public class Hardman {
         Scanner reader = new Scanner(System.in);
         Userinterface userinterface = new Userinterface(reader);
         if (args.length > 0) {
-            userinterface.uiAutoloadHardwarelist(args[0].toString());
+            userinterface.uiAutoloadHardwarelist(args[0]);
         }
         userinterface.start();
     }

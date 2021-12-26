@@ -20,6 +20,7 @@ public class Fileoperator {
                 String[] parts = reader.nextLine().split(";");
                 hwlist.add(new Hardware(parts[0], parts[1], parts[2]));
             }
+            System.out.println("Hardware list loaded from " + filename + "!");
         } catch (FileNotFoundException e) {
             System.out.println("Error opening " + filename + " - file not found!");
         }
@@ -32,6 +33,7 @@ public class Fileoperator {
             for (Hardware h : hwlist) {
                 writer.write(h.getTitle() + ";" + h.getType() + ";" + h.getLocation() + "\n");
             }
+            System.out.println("Hardware list saved as " + filename + "!");
             return true;
         } catch (Exception e) {
             System.out.println("Error saving file " + filename + "!");

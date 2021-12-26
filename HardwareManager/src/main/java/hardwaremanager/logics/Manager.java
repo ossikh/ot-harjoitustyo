@@ -95,7 +95,7 @@ public class Manager {
     }
 
     public void saveHardwarelist(String filename) {
-        fileoperator.saveList(filename, hwlist);
+        fileoperator.saveList(filename, this.hwlist);
     }
 
     public void loadHardwarelist(String filename) {

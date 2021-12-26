@@ -27,7 +27,7 @@ public class Userinterface {
 
         while (true) {
             uiDisplayMainMenu();
-            String action = reader.nextLine();
+            String action = uiGetAction();
 
             if (action.toLowerCase().equals("q")) {
                 break;
@@ -59,9 +59,6 @@ public class Userinterface {
             if (action.toLowerCase().equals("s")) {
                 uiSaveHardwarelist();
             }
-            if (action.toLowerCase().equals("g")) {
-                manager = crateGenericManager();
-            }
         }
     }
 
@@ -75,11 +72,10 @@ public class Userinterface {
                 + "[5] Search by location | "
                 + "[M] Modify hardware | "
                 + "[R] Remove hardware | "
-                + "[L] Load hardware list from file | "
+                + "[L] Load hardware list from a file | "
                 + "[S] Save hardware list to a file | "
                 + "[Q] Quit"
-        );
-        System.out.print("Select action: ");
+        );        
     }
 
     public void uiWelcomeMessage() {
@@ -95,27 +91,26 @@ public class Userinterface {
                 uiBlankLine();
                 System.out.println("You are modifying the following hardware: " + manager.getHardware(hwnumber));
                 uiBlankLine();
-                System.out.println("Select field to modify: [1] Title | [2] Type | [3] Location | [C] Cancel action");
-                System.out.print("Select action: ");
-                String action = reader.nextLine();
+                System.out.println("Select field to modify: [1] Title | [2] Type | [3] Location | [C] Cancel and return to main menu");                
+                String action = uiGetAction();
                 if (action.toLowerCase().equals("c")) {
                     break;
                 }
                 if (action.equals("1")) {
                     System.out.print("Enter new field for 'title': ");
-                    String title = cullInput(reader.nextLine());
+                    String title = uiCullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setTitle(title);
                     System.out.println("Title changed to '" + title + "'.");
                 }
                 if (action.equals("2")) {
                     System.out.print("Enter new field for 'type': ");
-                    String type = cullInput(reader.nextLine());
+                    String type = uiCullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setType(type);
                     System.out.println("Type changed to '" + type + "'.");
                 }
                 if (action.equals("3")) {
                     System.out.print("Enter new field for 'location': ");
-                    String location = cullInput(reader.nextLine());
+                    String location = uiCullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setLocation(location);
                     System.out.println("Location changed to '" + location + "'.");
                 }
@@ -123,7 +118,7 @@ public class Userinterface {
         }
     }
 
-    public String cullInput(String input) {
+    public String uiCullInput(String input) {
         while (true) {
             if (StringUtils.isNotBlank(input) && !input.contains(";") && input.length() <= 50) {
                 break;
@@ -133,6 +128,11 @@ public class Userinterface {
             }
         }
         return input;
+    }
+
+    public String uiGetAction() {
+        System.out.print("Select action: ");
+        return reader.nextLine();
     }
 
     public void uiSaveHardwarelist() {
@@ -151,7 +151,7 @@ public class Userinterface {
         System.out.print("Enter number of hardware to remove: ");
         String remove = reader.nextLine();
         uiBlankLine();
-        if (!confirmationCheck()) {
+        if (!uiConfirmationCheck()) {
             return;
         }
         if (remove.length() < 10 && NumberUtils.isDigits(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
@@ -175,11 +175,11 @@ public class Userinterface {
 
     public void uiAddHardware() {
         System.out.print("Enter new hardware title: ");
-        String title = cullInput(reader.nextLine());
+        String title = uiCullInput(reader.nextLine());
         System.out.print("Enter new hardware type: ");
-        String type = cullInput(reader.nextLine());
+        String type = uiCullInput(reader.nextLine());
         System.out.print("Enter new hardware location: ");
-        String location = cullInput(reader.nextLine());
+        String location = uiCullInput(reader.nextLine());
         manager.addHardware(new Hardware(title, type, location));
         System.out.println("Hardware added!");
     }
@@ -214,32 +214,14 @@ public class Userinterface {
     public void uiBlankLine() {
         System.out.println("");
     }
-    
-    public void uiAutoloadHardwarelist(String filename){
+
+    public void uiAutoloadHardwarelist(String filename) {
         manager.loadHardwarelist(filename);
     }
 
-    public boolean confirmationCheck() {
+    public boolean uiConfirmationCheck() {
         System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");
         return (reader.nextLine().toLowerCase().equals("y"));
-    }
-
-    public Manager crateGenericManager() {
-        Manager manager = new Manager();
-        manager.addHardware(new Hardware("Asus TUF Gaming B550-Plus", "Motherboard", "Main machine"));
-        manager.addHardware(new Hardware("Ryzen 7 3700X", "Processor", "Main machine"));
-        manager.addHardware(new Hardware("Corsair LPX DDR4-3200, 32 GB", "Memory", "Main machine"));
-        manager.addHardware(new Hardware("MSI GeForce GTX 1070 8 GB", "GPU", "Main machine"));
-        manager.addHardware(new Hardware("Samsung 970 Evo Plus 1 TB", "NVMe", "Main machine"));
-        manager.addHardware(new Hardware("Noctua NH-D15S", "Cooler", "Main machine"));
-        manager.addHardware(new Hardware("Fractal Design R5", "Case", "Main machine"));
-        manager.addHardware(new Hardware("AOC 32 IPS", "Monitor", "Main desk"));
-        manager.addHardware(new Hardware("Logitech MX Keys wireless", "Keyboard", "Main desk"));
-        manager.addHardware(new Hardware("ASUS ROG Strix Carry wireless", "Mouse", "Main desk"));
-        uiBlankLine();
-        System.out.println("Generic hardware list created!");
-        uiBlankLine();
-        return manager;
     }
 
 }
