@@ -16,12 +16,14 @@ public class Manager {
     }
 
     /**
-     * Lisää komponenttikirjanpitoon komponentin
+     * Luo komponenttikirjanpitoon uuden komponentin
      *
-     * @param hardware lisättävä komponentti
+     * @param title lisättävän komponentin nimi
+     * @param type lisättävän komponentin tyyppi
+     * @param location lisättävän komponentin sijainti
      */
-    public void addHardware(Hardware hardware) {
-        this.hwlist.add(hardware);
+    public void addNewHardware(String title, String type, String location) {
+        this.hwlist.add(new Hardware(title, type, location));
     }
 
     public void searchByTitle(String title) {
@@ -68,6 +70,12 @@ public class Manager {
             return true;
         }
         return false;
+    }
+
+    public void showLastAdded() {
+        if (hwlistNotEmpty()) {
+            System.out.println(hwlist.get(hwlist.size() - 1));
+        }
     }
 
     /**

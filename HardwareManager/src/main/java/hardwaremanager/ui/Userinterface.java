@@ -1,6 +1,5 @@
 package hardwaremanager.ui;
 
-import hardwaremanager.logics.Hardware;
 import hardwaremanager.logics.Manager;
 import java.util.Scanner;
 import org.apache.commons.lang3.math.NumberUtils;
@@ -66,7 +65,7 @@ public class Userinterface {
         System.out.println("Available actions: ");
         System.out.println(""
                 + "[1] List all hardware | "
-                + "[2] Add hardware | "
+                + "[2] Add new hardware | "
                 + "[3] Search by title | "
                 + "[4] Search by type | "
                 + "[5] Search by location | "
@@ -84,10 +83,11 @@ public class Userinterface {
 
     public void uiModifyHardwareSubMenu() {
         uiListHardware();
+        uiBlankLine();
         System.out.print("Enter ID number of hardware to modify: ");
-        String modify = reader.nextLine();
-        if (modify.length() < 10 && NumberUtils.isDigits(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
-            int hwnumber = NumberUtils.createInteger(modify);
+        String input = reader.nextLine();
+        if (uiIsValidHardwareNumber(input)) {
+            int hwnumber = NumberUtils.createInteger(input);
             while (true) {
                 uiBlankLine();
                 System.out.println("You are modifying the following hardware: " + hwnumber + ". " + manager.getHardware(hwnumber));
@@ -130,6 +130,10 @@ public class Userinterface {
             }
         }
     }
+    
+    public boolean uiIsValidHardwareNumber(String input){
+        return (input.length() < 10 && NumberUtils.isDigits(input) && manager.getHardware(NumberUtils.createInteger(input)) != null);
+    }
 
     public String uiCullInput(String input) {
         while (true) {
@@ -160,25 +164,25 @@ public class Userinterface {
     public void uiLoadHardwarelist() {
         System.out.print("Enter the filename of hardware list to load: ");
         String filename = reader.nextLine();
-        System.out.println("You are about to try and load " + filename + ".hwm, any unsaved changes will be lost when loading another list!");
+        System.out.println("You are about to try and load " + filename + ".hwm, any unsaved changes will be lost if another list is loaded!");
         if (uiConfirmationCheck()) {
             manager.loadHardwarelist(filename);
         }
     }
 
     public void uiRemoveHardware() {
-        System.out.print("Enter number of hardware to remove: ");
-        String remove = reader.nextLine();
+        uiListHardware();
         uiBlankLine();
-        if (!uiConfirmationCheck()) {
-            return;
+        System.out.print("Enter ID number of hardware to remove: ");
+        String remove = reader.nextLine();        
+        if (uiIsValidHardwareNumber(remove)){
+            int hwnumber = NumberUtils.createInteger(remove);
+            System.out.println("You are about to remove the following hardware: " + manager.getHardware(hwnumber));
+            if (uiConfirmationCheck()){
+                manager.removeHardware(hwnumber);
+                System.out.println("Hardware removed!");
+            }
         }
-        if (remove.length() < 10 && NumberUtils.isDigits(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
-            System.out.println("Hardware removed!");
-        } else {
-            System.out.println("Hardware not removed!");
-        }
-        uiBlankLine();
     }
 
     public void uiListHardware() {
@@ -189,7 +193,6 @@ public class Userinterface {
         } else {
             System.out.println("No hardware found!");
         }
-        uiBlankLine();
     }
 
     public void uiAddHardware() {
@@ -199,8 +202,10 @@ public class Userinterface {
         String type = uiCullInput(reader.nextLine());
         System.out.print("Enter new hardware location: ");
         String location = uiCullInput(reader.nextLine());
-        manager.addHardware(new Hardware(title, type, location));
-        System.out.println("Hardware added!");
+        manager.addNewHardware(title, type, location);
+        uiBlankLine();
+        System.out.print("Hardware added: ");        
+        manager.showLastAdded();
     }
 
     public void uiTitleSearch() {
@@ -209,7 +214,6 @@ public class Userinterface {
         System.out.println("Displaying items containing title '" + title + "': ");
         uiBlankLine();
         manager.searchByTitle(title);
-        uiBlankLine();
     }
 
     public void uiTypeSearch() {
@@ -218,7 +222,6 @@ public class Userinterface {
         System.out.println("Displaying items containing type '" + type + "': ");
         uiBlankLine();
         manager.searchByType(type);
-        uiBlankLine();
     }
 
     public void uiLocationSearch() {
@@ -227,7 +230,6 @@ public class Userinterface {
         System.out.println("Displaying items on location containing '" + location + "': ");
         uiBlankLine();
         manager.searchByLocation(location);
-        uiBlankLine();
     }
 
     public void uiBlankLine() {
