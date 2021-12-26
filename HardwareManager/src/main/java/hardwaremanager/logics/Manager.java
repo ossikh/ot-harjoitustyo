@@ -42,7 +42,7 @@ public class Manager {
      * Hakee ja tulostaa listalta löytyvät komponentit tyypissä esiintyvän
      * merkkijonon perusteella
      *
-     * @param title merkkijono jonka perusteella haetaan
+     * @param type merkkijono jonka perusteella haetaan
      */
     public void searchByType(String type) {
         hwlist.stream()
@@ -54,7 +54,7 @@ public class Manager {
      * Hakee ja tulostaa listalta löytyvät komponentit sijainnissa esiintyvän
      * merkkijonon perusteella
      *
-     * @param title merkkijono jonka perusteella haetaan
+     * @param location merkkijono jonka perusteella haetaan
      */
     public void searchByLocation(String location) {
         hwlist.stream()
