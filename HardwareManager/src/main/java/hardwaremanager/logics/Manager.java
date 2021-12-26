@@ -26,18 +26,36 @@ public class Manager {
         this.hwlist.add(new Hardware(title, type, location));
     }
 
+    /**
+     * Hakee ja tulostaa listalta löytyvät komponentit nimessä esiintyvän
+     * merkkijonon perusteella
+     *
+     * @param title merkkijono jonka perusteella haetaan
+     */
     public void searchByTitle(String title) {
         hwlist.stream()
                 .filter(h -> h.getTitle().toLowerCase().contains(title.toLowerCase()))
                 .forEach(System.out::println);
     }
 
+    /**
+     * Hakee ja tulostaa listalta löytyvät komponentit tyypissä esiintyvän
+     * merkkijonon perusteella
+     *
+     * @param title merkkijono jonka perusteella haetaan
+     */
     public void searchByType(String type) {
         hwlist.stream()
                 .filter(h -> h.getType().toLowerCase().contains(type.toLowerCase()))
                 .forEach(System.out::println);
     }
 
+    /**
+     * Hakee ja tulostaa listalta löytyvät komponentit sijainnissa esiintyvän
+     * merkkijonon perusteella
+     *
+     * @param title merkkijono jonka perusteella haetaan
+     */
     public void searchByLocation(String location) {
         hwlist.stream()
                 .filter(h -> h.getLocation().toLowerCase().contains(location.toLowerCase()))
@@ -72,6 +90,9 @@ public class Manager {
         return false;
     }
 
+    /**
+     * Tulostaa viimeksi lisätyn komponentin tiedot
+     */
     public void showLastAdded() {
         if (hwlistNotEmpty()) {
             System.out.println(hwlist.get(hwlist.size() - 1));
@@ -102,10 +123,22 @@ public class Manager {
         return !hwlist.isEmpty();
     }
 
+    /**
+     * Tallentaa komponenttilistan fileoperator-luokkaa käyttäen
+     *
+     * @param filename tiedostonimi jolla lista tallennetaan, lisää
+     * automaattisesti .hwm päätteen
+     */
     public void saveHardwarelist(String filename) {
         fileoperator.saveList(filename, this.hwlist);
     }
 
+    /**
+     * Lataa komponenttilistan tiedostosta
+     *
+     * @param filename tiedostonimi josta lista ladataan, lisää automaattisesti
+     * .hwm päätteen
+     */
     public void loadHardwarelist(String filename) {
         ArrayList loadlist = fileoperator.loadList(filename);
         if (loadlist != null && loadlist.size() > 0) {
