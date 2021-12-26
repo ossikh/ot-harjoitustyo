@@ -11,6 +11,8 @@ Ohjelman avulla voi pitää kirjaa ATK-komponenteista ja oheislaitteista.
 
 [Vaatimusmäärittely](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
+[Testausdokumentti](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/testausdokumentti.md)
+
 [Tuntikirjanpito](https://github.com/ossikh/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
 ## Releaset
@@ -41,9 +43,6 @@ Ohjelmalle voidaan antaa komentiriviparametrina automaattisesti avattava kompone
 ```
 java -jar hardwaremanager-1.0-SNAPSHOT.jar uudetkomponentit
 ```
-
-
-
 
 
 Ohjelman testien suoritus onnistuu komennolla:
