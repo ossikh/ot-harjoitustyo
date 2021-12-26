@@ -37,6 +37,15 @@ Alihakemistoon _/target/_ luotu jar-tiedosto voidaan käynnistää komennolla:
 java -jar hardwaremanager-1.0-SNAPSHOT.jar
 ```
 
+Ohjelmalle voidaan antaa komentiriviparametrina automaattisesti avattava komponenttilista. Ohjelma lukee .hwm -tiedostoja, päätettä ei tule antaa syötteessä. Esimerkiksi _uudetkomponentit.hwm_ -tiedosto avautuisi seuraavasti:
+```
+java -jar hardwaremanager-1.0-SNAPSHOT.jar uudetkomponentit
+```
+
+
+
+
+
 Ohjelman testien suoritus onnistuu komennolla:
 ```
 mvn test

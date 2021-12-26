@@ -7,15 +7,18 @@ Sovelluksen avulla käyttäjä voi pitää kirjaa ATK-komponenteistaan.
 
 ## Käyttäjät
 
-Sovelluksella on yksi käyttäjä. Myöhemmin saatetaan lisätä tuki useammalle käyttäjälle.
+Sovelluksella ei ole erillisiä käyttäjätilejä. Komponenttilistauksia voidaan kuitenkin tallentaa lukematon määrä.
 
 
 ## Perusversion tarjoama toiminnallisuus
 
 - Lista komponenteista & oheislaitteista
-- Kunkin komponentin sijainti
+- Kunkin komponentin ominaisuuksina nimi, tyyppi ja sijainti
 - Komponenttien haku ja listaus nimen, tyypin tai sijainnin mukaan
-- Komponentin poistaminen järjestelmästä (tehty)
+- Kunkin komponentin tietuiden muokkaus
+- Komponenttilistauksen tallennus erilliseen tiedostoon halutulla tiedostonimellä
+- Komponenttilistausten luku aiemmin tallennetuista tiedostoista
+- Mahdollisuus antaa komentoriviparametrina komponenttilistauksen sisältävän tiedoston nimi ja avata se automaattisesti
 
 
 ## Laajennusideoita
@@ -25,4 +28,3 @@ Sovelluksella on yksi käyttäjä. Myöhemmin saatetaan lisätä tuki useammalle
 - Komponenttien SKU
 - Komponenttien tarkemmat spesifikaatiot
 - Komponenttien yhteensopivuuden tarkistus kokoonpanoissa
-
