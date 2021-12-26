@@ -11,6 +11,13 @@ import java.util.ArrayList;
  */
 public class Fileoperator {
 
+    /**
+     * Lataa komponenttilistan tiedostosta
+     *
+     * @param filename tiedostonimi josta lista ladataan, lisää automaattisesti
+     * .hwm päätteen
+     * @return palauttaa tiedostosta luetun komponenttilistan
+     */
     public ArrayList<Hardware> loadList(String filename) {
         filename += ".hwm";
         ArrayList hwlist = new ArrayList();
@@ -27,17 +34,23 @@ public class Fileoperator {
         return hwlist;
     }
 
-    public boolean saveList(String filename, ArrayList<Hardware> hwlist) {
+    /**
+     * Tallentaa komponenttilistan tiedostoon
+     *
+     * @param filename tiedostonimi johon komponenttilista tallennetaan, lisää
+     * automaattiesti .hwm päätteen
+     * @param hwlist komponenttilista joka tallennetaan tiedostoon
+     * @return
+     */
+    public void saveList(String filename, ArrayList<Hardware> hwlist) {
         filename += ".hwm";
         try (FileWriter writer = new FileWriter(new File(filename))) {
             for (Hardware h : hwlist) {
                 writer.write(h.getTitle() + ";" + h.getType() + ";" + h.getLocation() + "\n");
             }
             System.out.println("Hardware list saved as " + filename + "!");
-            return true;
         } catch (Exception e) {
             System.out.println("Error saving file " + filename + "!");
-            return false;
         }
     }
 
