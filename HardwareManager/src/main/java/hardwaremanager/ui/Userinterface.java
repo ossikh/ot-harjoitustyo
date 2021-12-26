@@ -2,9 +2,9 @@ package hardwaremanager.ui;
 
 import hardwaremanager.logics.Hardware;
 import hardwaremanager.logics.Manager;
-import hardwaremanager.logics.Fileoperator;
 import java.util.Scanner;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Käyttöliittymästä vastaava luokka
@@ -54,10 +54,10 @@ public class Userinterface {
                 uiRemoveHardware();
             }
             if (action.toLowerCase().equals("l")) {
-                uiLoadHwlist();
+                uiLoadHardwarelist();
             }
             if (action.toLowerCase().equals("s")) {
-                uiSaveHwlist();
+                uiSaveHardwarelist();
             }
             if (action.toLowerCase().equals("g")) {
                 manager = crateGenericManager();
@@ -76,7 +76,7 @@ public class Userinterface {
                 + "[M] Modify hardware | "
                 + "[R] Remove hardware | "
                 + "[L] Load hardware list from file | "
-                + "[S] Save hardware list to a file | "                
+                + "[S] Save hardware list to a file | "
                 + "[Q] Quit"
         );
         System.out.print("Select action: ");
@@ -84,18 +84,6 @@ public class Userinterface {
 
     public void uiWelcomeMessage() {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
-    }
-
-    public void uiSaveHwlist() {
-        System.out.print("Enter the filename to save current hardware list as: ");
-        String filename = reader.nextLine();
-        manager.saveHardwarelist(filename);
-    }
-
-    public void uiLoadHwlist() {
-        System.out.print("Enter the filename of hardware list to load: ");
-        String filename = reader.nextLine();
-        manager.loadHardwarelist(filename);
     }
 
     public void uiModifyHardwareMenu() {
@@ -115,24 +103,48 @@ public class Userinterface {
                 }
                 if (action.equals("1")) {
                     System.out.print("Enter new field for 'title': ");
-                    String title = reader.nextLine();
+                    String title = cullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setTitle(title);
                     System.out.println("Title changed to '" + title + "'.");
                 }
                 if (action.equals("2")) {
                     System.out.print("Enter new field for 'type': ");
-                    String type = reader.nextLine();
+                    String type = cullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setType(type);
                     System.out.println("Type changed to '" + type + "'.");
                 }
                 if (action.equals("3")) {
                     System.out.print("Enter new field for 'location': ");
-                    String location = reader.nextLine();
+                    String location = cullInput(reader.nextLine());
                     manager.getHardware(hwnumber).setLocation(location);
                     System.out.println("Location changed to '" + location + "'.");
                 }
             }
         }
+    }
+
+    public String cullInput(String input) {
+        while (true) {
+            if (StringUtils.isNotBlank(input) && !input.contains(";") && input.length() <= 50) {
+                break;
+            } else {
+                System.out.print("Input cannot be blank, longer than 50 characters, or contain the following character ';' - please try again: ");
+                input = reader.nextLine();
+            }
+        }
+        return input;
+    }
+
+    public void uiSaveHardwarelist() {
+        System.out.print("Enter the filename to save current hardware list as: ");
+        String filename = reader.nextLine();
+        manager.saveHardwarelist(filename);
+    }
+
+    public void uiLoadHardwarelist() {
+        System.out.print("Enter the filename of hardware list to load: ");
+        String filename = reader.nextLine();
+        manager.loadHardwarelist(filename);
     }
 
     public void uiRemoveHardware() {
@@ -163,11 +175,11 @@ public class Userinterface {
 
     public void uiAddHardware() {
         System.out.print("Enter new hardware title: ");
-        String title = reader.nextLine();
+        String title = cullInput(reader.nextLine());
         System.out.print("Enter new hardware type: ");
-        String type = reader.nextLine();
+        String type = cullInput(reader.nextLine());
         System.out.print("Enter new hardware location: ");
-        String location = reader.nextLine();
+        String location = cullInput(reader.nextLine());
         manager.addHardware(new Hardware(title, type, location));
         System.out.println("Hardware added!");
     }

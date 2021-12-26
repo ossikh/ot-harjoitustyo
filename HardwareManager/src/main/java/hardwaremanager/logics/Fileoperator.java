@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Fileoperator {
 
     public ArrayList<Hardware> loadList(String filename) {
+        filename += ".hwm";
         ArrayList hwlist = new ArrayList();
         try {
             Scanner reader = new Scanner(new File(filename));
@@ -26,6 +27,7 @@ public class Fileoperator {
     }
 
     public boolean saveList(String filename, ArrayList<Hardware> hwlist) {
+        filename += ".hwm";
         try (FileWriter writer = new FileWriter(new File(filename))) {
             for (Hardware h : hwlist) {
                 writer.write(h.getTitle() + ";" + h.getType() + ";" + h.getLocation() + "\n");
