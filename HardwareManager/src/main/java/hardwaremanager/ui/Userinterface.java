@@ -22,15 +22,16 @@ public class Userinterface {
     }
 
     public void start() {
-
         uiWelcomeMessage();
         uiBlankLine();
 
         while (true) {
-
-            uiDisplayMenu();
+            uiDisplayMainMenu();
             String action = reader.nextLine();
 
+            if (action.toLowerCase().equals("q")) {
+                break;
+            }
             if (action.equals("1")) {
                 uiListHardware();
             }
@@ -47,33 +48,24 @@ public class Userinterface {
                 uiLocationSearch();
             }
             if (action.toLowerCase().equals("m")) {
-                uiModifyHardware();
+                uiModifyHardwareMenu();
             }
             if (action.toLowerCase().equals("r")) {
                 uiRemoveHardware();
             }
+            if (action.toLowerCase().equals("l")) {
+                uiLoadHwlist();
+            }
+            if (action.toLowerCase().equals("s")) {
+                uiSaveHwlist();
+            }
             if (action.toLowerCase().equals("g")) {
                 manager = crateGenericManager();
             }
-            if (action.toLowerCase().equals("q")) {
-                break;
-            }
-            if (action.toLowerCase().equals("loadlist")){
-                System.out.println("enter load filename: ");
-                String filename = reader.nextLine();
-                manager.loadHardwarelist(filename);
-            }
-            if (action.toLowerCase().equals("savelist")){
-                System.out.println("enter save filename: ");
-                String filename = reader.nextLine();
-                manager.saveHardwarelist(filename);
-            }
-
         }
-
     }
 
-    public void uiDisplayMenu() {
+    public void uiDisplayMainMenu() {
         System.out.println("Available actions: ");
         System.out.println(""
                 + "[1] List all hardware | "
@@ -81,11 +73,12 @@ public class Userinterface {
                 + "[3] Search by title | "
                 + "[4] Search by type | "
                 + "[5] Search by location | "
+                + "[M] Modify hardware | "
                 + "[R] Remove hardware | "
-                + "[G] Create generic hardware list for testing purposes | "
+                + "[L] Load hardware list from file | "
+                + "[S] Save hardware list to a file | "                
                 + "[Q] Quit"
         );
-
         System.out.print("Select action: ");
     }
 
@@ -93,7 +86,19 @@ public class Userinterface {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
     }
 
-    public void uiModifyHardware() {
+    public void uiSaveHwlist() {
+        System.out.print("Enter the filename to save current hardware list as: ");
+        String filename = reader.nextLine();
+        manager.saveHardwarelist(filename);
+    }
+
+    public void uiLoadHwlist() {
+        System.out.print("Enter the filename of hardware list to load: ");
+        String filename = reader.nextLine();
+        manager.loadHardwarelist(filename);
+    }
+
+    public void uiModifyHardwareMenu() {
         System.out.print("Enter number of hardware to modify: ");
         String modify = reader.nextLine();
         if (modify.length() < 10 && NumberUtils.isDigits(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
@@ -205,10 +210,10 @@ public class Userinterface {
 
     public Manager crateGenericManager() {
         Manager manager = new Manager();
-        manager.addHardware(new Hardware("Asus TUF B550", "Motherboard", "Main machine"));
-        manager.addHardware(new Hardware("Ryzen 7 3700x", "Processor", "Main machine"));
-        manager.addHardware(new Hardware("Corsair LPX DDR4-3200, 32GB", "Memory", "Main machine"));
-        manager.addHardware(new Hardware("MSI Geforce GTX 1070 8 GB", "GPU", "Main machine"));
+        manager.addHardware(new Hardware("Asus TUF Gaming B550-Plus", "Motherboard", "Main machine"));
+        manager.addHardware(new Hardware("Ryzen 7 3700X", "Processor", "Main machine"));
+        manager.addHardware(new Hardware("Corsair LPX DDR4-3200, 32 GB", "Memory", "Main machine"));
+        manager.addHardware(new Hardware("MSI GeForce GTX 1070 8 GB", "GPU", "Main machine"));
         manager.addHardware(new Hardware("Samsung 970 Evo Plus 1 TB", "NVMe", "Main machine"));
         manager.addHardware(new Hardware("Noctua NH-D15S", "Cooler", "Main machine"));
         manager.addHardware(new Hardware("Fractal Design R5", "Case", "Main machine"));
