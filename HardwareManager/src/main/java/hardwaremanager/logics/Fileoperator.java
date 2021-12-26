@@ -21,7 +21,7 @@ public class Fileoperator {
                 hwlist.add(new Hardware(parts[0], parts[1], parts[2]));
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Error loading - file not found!");
+            System.out.println("Error opening " + filename + " - file not found!");
         }
         return hwlist;
     }
@@ -34,7 +34,7 @@ public class Fileoperator {
             }
             return true;
         } catch (Exception e) {
-            System.out.println("Error saving file!");
+            System.out.println("Error saving file " + filename + "!");
             return false;
         }
     }
