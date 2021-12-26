@@ -18,7 +18,7 @@ Sovelluksella ei ole erillisiä käyttäjätilejä. Komponenttilistauksia voidaa
 - Kunkin komponentin tietuiden muokkaus
 - Komponenttilistauksen tallennus erilliseen tiedostoon halutulla tiedostonimellä
 - Komponenttilistausten luku aiemmin tallennetuista tiedostoista
-- Mahdollisuus antaa komentoriviparametrina komponenttilistaukksen sisältävän tiedoston nimi ja avata se automaattisesti
+- Mahdollisuus antaa komentoriviparametrina komponenttilistauksen sisältävän tiedoston nimi ja avata se automaattisesti
 
 
 ## Laajennusideoita
