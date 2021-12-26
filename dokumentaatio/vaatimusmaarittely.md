@@ -15,7 +15,7 @@ Sovelluksella ei ole erillisiä käyttäjätilejä. Komponenttilistauksia voidaa
 - Lista komponenteista & oheislaitteista
 - Kunkin komponentin ominaisuuksina nimi, tyyppi ja sijainti
 - Komponenttien haku ja listaus nimen, tyypin tai sijainnin mukaan
-- Kunkin komponentin tietuiden muokkaus
+- Kunkin komponentin tietueiden muokkaus
 - Komponenttilistauksen tallennus erilliseen tiedostoon halutulla tiedostonimellä
 - Komponenttilistausten luku aiemmin tallennetuista tiedostoista
 - Mahdollisuus antaa komentoriviparametrina komponenttilistauksen sisältävän tiedoston nimi ja avata se automaattisesti
