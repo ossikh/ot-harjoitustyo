@@ -39,8 +39,7 @@ public class Fileoperator {
      *
      * @param filename tiedostonimi johon komponenttilista tallennetaan, lisää
      * automaattiesti .hwm päätteen
-     * @param hwlist komponenttilista joka tallennetaan tiedostoon
-     * @return
+     * @param hwlist komponenttilista joka tallennetaan tiedostoon     
      */
     public void saveList(String filename, ArrayList<Hardware> hwlist) {
         filename += ".hwm";
