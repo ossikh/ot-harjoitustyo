@@ -32,7 +32,7 @@ public class ManagerTest {
 
     @Before
     public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));        
+        System.setOut(new PrintStream(outputStreamCaptor));
         manager = new Manager();
         manager.addNewHardware("B550", "Motherboard", "Main machine");
     }
@@ -40,6 +40,23 @@ public class ManagerTest {
     @After
     public void tearDown() {
         System.setOut(standardOut);
+    }
+    
+    @Test
+    public void showLastAddedShowsLastAdded(){
+        manager.addNewHardware("Last", "hardware", "lost");
+        manager.showLastAdded();
+        assertEquals("Last - hardware @ lost.", outputStreamCaptor.toString().trim());
+    }
+    
+    @Test
+    public void getHardwareDoesntGetNonexistentHardwareID() {        
+        assertEquals(null, manager.getHardware(2));
+    }
+
+    @Test
+    public void getHardwareGetsHardware() {        
+        assertEquals("B550 - Motherboard @ Main machine.", manager.getHardware(1).toString());
     }
 
     @Test
