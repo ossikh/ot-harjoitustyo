@@ -96,7 +96,7 @@ public class Userinterface {
     public void uiModifyHardware() {
         System.out.print("Enter number of hardware to modify: ");
         String modify = reader.nextLine();
-        if (modify.length() < 10 && NumberUtils.isCreatable(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
+        if (modify.length() < 10 && NumberUtils.isDigits(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
             int hwnumber = NumberUtils.createInteger(modify);
             while (true) {
                 uiBlankLine();
@@ -137,7 +137,7 @@ public class Userinterface {
         if (!confirmationCheck()) {
             return;
         }
-        if (remove.length() < 10 && NumberUtils.isCreatable(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
+        if (remove.length() < 10 && NumberUtils.isDigits(remove) && manager.removeHardware(NumberUtils.createInteger(remove))) {
             System.out.println("Hardware removed!");
         } else {
             System.out.println("Hardware not removed!");
