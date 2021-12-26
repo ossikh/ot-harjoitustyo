@@ -214,6 +214,10 @@ public class Userinterface {
     public void uiBlankLine() {
         System.out.println("");
     }
+    
+    public void uiAutoloadHardwarelist(String filename){
+        manager.loadHardwarelist(filename);
+    }
 
     public boolean confirmationCheck() {
         System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");

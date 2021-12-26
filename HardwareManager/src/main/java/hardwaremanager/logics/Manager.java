@@ -100,7 +100,7 @@ public class Manager {
 
     public void loadHardwarelist(String filename) {
         ArrayList loadlist = fileoperator.loadList(filename);
-        if (loadlist != null && loadlist.size() > 0){
+        if (loadlist != null && loadlist.size() > 0) {
             this.hwlist = loadlist;
         }
     }
