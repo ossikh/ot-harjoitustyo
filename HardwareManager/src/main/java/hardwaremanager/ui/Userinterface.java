@@ -23,9 +23,9 @@ public class Userinterface {
 
     public void start() {
         uiWelcomeMessage();
-        uiBlankLine();
 
         while (true) {
+            uiBlankLine();
             uiDisplayMainMenu();
             String action = uiGetAction();
 
@@ -48,7 +48,7 @@ public class Userinterface {
                 uiLocationSearch();
             }
             if (action.toLowerCase().equals("m")) {
-                uiModifyHardwareMenu();
+                uiModifyHardwareSubMenu();
             }
             if (action.toLowerCase().equals("r")) {
                 uiRemoveHardware();
@@ -75,44 +75,57 @@ public class Userinterface {
                 + "[L] Load hardware list from a file | "
                 + "[S] Save hardware list to a file | "
                 + "[Q] Quit"
-        );        
+        );
     }
 
     public void uiWelcomeMessage() {
         System.out.println("-=[   Welcome to ICT Hardware Manager   ]=-");
     }
 
-    public void uiModifyHardwareMenu() {
-        System.out.print("Enter number of hardware to modify: ");
+    public void uiModifyHardwareSubMenu() {
+        uiListHardware();
+        System.out.print("Enter ID number of hardware to modify: ");
         String modify = reader.nextLine();
         if (modify.length() < 10 && NumberUtils.isDigits(modify) && manager.getHardware(NumberUtils.createInteger(modify)) != null) {
             int hwnumber = NumberUtils.createInteger(modify);
             while (true) {
                 uiBlankLine();
-                System.out.println("You are modifying the following hardware: " + manager.getHardware(hwnumber));
+                System.out.println("You are modifying the following hardware: " + hwnumber + ". " + manager.getHardware(hwnumber));
                 uiBlankLine();
-                System.out.println("Select field to modify: [1] Title | [2] Type | [3] Location | [C] Cancel and return to main menu");                
+                System.out.println("Select field to modify: [1] Title | [2] Type | [3] Location | [C] Return to main menu");
                 String action = uiGetAction();
                 if (action.toLowerCase().equals("c")) {
                     break;
                 }
                 if (action.equals("1")) {
-                    System.out.print("Enter new field for 'title': ");
-                    String title = uiCullInput(reader.nextLine());
-                    manager.getHardware(hwnumber).setTitle(title);
-                    System.out.println("Title changed to '" + title + "'.");
+                    String originalTitle = manager.getHardware(hwnumber).getTitle();
+                    System.out.print("Enter new title to replace '" + originalTitle + "': ");
+                    String newTitle = uiCullInput(reader.nextLine());
+                    System.out.println("You are about to change '" + originalTitle + "' to '" + newTitle + "'.");
+                    if (uiConfirmationCheck()) {
+                        manager.getHardware(hwnumber).setTitle(newTitle);
+                        System.out.println("Title changed from '" + originalTitle + "' to '" + newTitle + "'.");
+                    }
                 }
                 if (action.equals("2")) {
-                    System.out.print("Enter new field for 'type': ");
-                    String type = uiCullInput(reader.nextLine());
-                    manager.getHardware(hwnumber).setType(type);
-                    System.out.println("Type changed to '" + type + "'.");
+                    String originalType = manager.getHardware(hwnumber).getType();
+                    System.out.print("Enter new type to replace '" + originalType + "': ");
+                    String newType = uiCullInput(reader.nextLine());
+                    System.out.println("You are about to change '" + originalType + "' to '" + newType + "'.");
+                    if (uiConfirmationCheck()) {
+                        manager.getHardware(hwnumber).setType(newType);
+                        System.out.println("Type changed from '" + originalType + "' to '" + newType + "'.");
+                    }
                 }
                 if (action.equals("3")) {
-                    System.out.print("Enter new field for 'location': ");
-                    String location = uiCullInput(reader.nextLine());
-                    manager.getHardware(hwnumber).setLocation(location);
-                    System.out.println("Location changed to '" + location + "'.");
+                    String originalLocation = manager.getHardware(hwnumber).getLocation();
+                    System.out.print("Enter new location to replace '" + originalLocation + "': ");
+                    String newLocation = uiCullInput(reader.nextLine());
+                    System.out.println("You are about to change '" + originalLocation + "' to '" + newLocation + "'.");
+                    if (uiConfirmationCheck()) {
+                        manager.getHardware(hwnumber).setLocation(newLocation);
+                        System.out.println("Location changed from '" + originalLocation + "' to '" + newLocation + "'.");
+                    }
                 }
             }
         }
@@ -137,14 +150,20 @@ public class Userinterface {
 
     public void uiSaveHardwarelist() {
         System.out.print("Enter the filename to save current hardware list as: ");
-        String filename = reader.nextLine();
-        manager.saveHardwarelist(filename);
+        String filename = uiCullInput(reader.nextLine());
+        System.out.println("You are about to save hardware list as " + filename + ".hwm");
+        if (uiConfirmationCheck()) {
+            manager.saveHardwarelist(filename);
+        }
     }
 
     public void uiLoadHardwarelist() {
         System.out.print("Enter the filename of hardware list to load: ");
         String filename = reader.nextLine();
-        manager.loadHardwarelist(filename);
+        System.out.println("You are about to try and load " + filename + ".hwm, any unsaved changes will be lost when loading another list!");
+        if (uiConfirmationCheck()) {
+            manager.loadHardwarelist(filename);
+        }
     }
 
     public void uiRemoveHardware() {
@@ -220,8 +239,12 @@ public class Userinterface {
     }
 
     public boolean uiConfirmationCheck() {
-        System.out.print("Confirmation required, press 'Y' and Enter to proceed: ");
-        return (reader.nextLine().toLowerCase().equals("y"));
+        System.out.print("Confirmation required, press 'Y' and Enter to proceed with action: ");
+        if (reader.nextLine().toLowerCase().equals("y")) {
+            return true;
+        } else {
+            System.out.println("Action aborted!");
+        }
+        return false;
     }
-
 }
