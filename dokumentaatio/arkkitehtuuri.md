@@ -1,7 +1,8 @@
 ## Arkkitehtuurikuvaus
 ![alustava arkkitehtuurikuvaus](hardman_arkki2.png)
   
-Hardman on ohjelman pääluokka, joka käynnistää käyttöliittymän.  
+Hardman on ohjelman pääluokka, joka käynnistää käyttöliittymän.
+  
 Käyttöliittymästä vastaa täysin ui-pakkauksen luokka Userinterface, jonne käyttöliittymä on eriytetty. Käyttöliittymäluokassa on pyritty vähentämään toisteinen koodi minimiin eriyttämällä uudelleenkäytettävät toiminnallisuuden omiksi metodeiksensa. Käyttöliittymä kommunikoi ainoastaan logics-pakkauksen Manager-luokan kanssa.  
   
 Ohjelman päätoiminnallisuuden sekä kirjanpidon tarjoaa Manager-luokka, joka vastaa komponenttilistan ylläpidosta ja manipuloinnista. Tietokonekomponentteja kuvaa luokka Hardware, jolla ei ole varsinaista toiminnallisuutta ns. perus gettereiden ja settereiden lisäksi. Tiedostojen luku- ja kirjoitusoperaatiot kulkevat Manager-luokan kautta ja niistä vastaava luokka on Fileoperator.  
